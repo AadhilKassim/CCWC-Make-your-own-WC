@@ -107,17 +107,14 @@ int readletter(const char *a)
 {
     std::ifstream rfile(a, std::ios::binary); // open file to be read
 
-    char ch{};
+    std::string line;
     int charcount{};
 
     if (rfile.is_open())
     {
-        while (rfile.get(ch))
+        while (std::getline(rfile,line))
         {
-            if (!std::isspace(ch))
-            {
-                charcount++;
-            }
+            charcount+=line.length();
         }
         rfile.close(); // Ensure the file is closed after reading
 

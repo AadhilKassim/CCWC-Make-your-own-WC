@@ -49,6 +49,22 @@ Example:
 ./ccwc -l example.txt
 ```
 
+### Multibyte Character Count
+
+To count the number of characters in a multibyte file:
+
+```bash
+./ccwc -m <filename>
+```
+
+- `-m`: Option to count characters.
+- `<filename>`: Path to the file you want to analyze.
+
+Example:
+```bash
+./ccwc -c example.txt
+```
+
 ## Error Handling
 
 - **File Not Found**: If the specified file cannot be opened, an error message will be displayed.
