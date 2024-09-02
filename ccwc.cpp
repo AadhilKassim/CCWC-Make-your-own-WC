@@ -23,5 +23,14 @@ int main(int argc, char *argv[])
         return 1;
         }
     }
+
+    if (argc > 2 && std::string(argv[1]) == "-w")
+    {
+        if(readword(argv[2]) != 0)
+        {
+        std::cerr << "Error processing the file!\n";
+        return 1;
+        }
+    }
         return 0;
 }
