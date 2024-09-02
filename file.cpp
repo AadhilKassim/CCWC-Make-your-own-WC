@@ -102,3 +102,37 @@ int readword(const char *a)
         return 1;
     }
 }
+
+int readletter(const char *a)
+{
+    std::ifstream rfile(a, std::ios::binary); // open file to be read
+
+    char ch{};
+    int charcount{};
+
+    if (rfile.is_open())
+    {
+        while (rfile.get(ch))
+        {
+            if (!std::isspace(ch))
+            {
+                charcount++;
+            }
+        }
+        rfile.close(); // Ensure the file is closed after reading
+
+        std::cout << "\t" << charcount << " " << a << "\n"; // print character count
+
+        if (charcount == 0)
+        {
+            std::cerr << "The file does not have any non-whitespace characters!\n"; // error for 0 output
+        }
+
+        return 0;
+    }
+    else
+    {
+        std::cerr << "The file " << a << " could not be opened!\n"; // error for when file open fails or file not found
+        return 1;
+    }
+}

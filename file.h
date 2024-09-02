@@ -3,4 +3,5 @@
 int readchar(const char[]);
 int readline(const char[]);
 int readword(const char[]);
+int readletter(const char[]);
 #endif
