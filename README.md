@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is my solution to the Word Count (WC) Challenge posted on codingchallenges.fyi. The challenge required the implementation of a command line utility similar to the Unix wc command. This utility counts the number of characters and lines in a given text file, displaying the count along with the filename.
+This project is my solution to the Word Count (WC) Challenge posted on [codingchallenges.fyi](https://www.codingchallenges.fyi/challenges/challenge-wc). The challenge required the implementation of a command line utility similar to the Unix wc command. This utility counts the number of characters and lines in a given text file, displaying the count along with the filename.
 
 ## Features
 
