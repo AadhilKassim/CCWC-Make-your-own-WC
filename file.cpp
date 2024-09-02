@@ -122,7 +122,7 @@ int readletter(const char *a)
 
         if (charcount == 0)
         {
-            std::cerr << "The file does not have any non-whitespace characters!\n"; // error for 0 output
+            std::cerr << "The file does not have any characters!\n"; // error for 0 output
         }
 
         return 0;
