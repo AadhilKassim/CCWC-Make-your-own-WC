@@ -1,8 +1,8 @@
-# CCWC Tool (Word Count Tool)
+# Word Count (WC) Command Line Program
 
 ## Overview
 
-The CCWC is a command-line utility designed to count characters and lines in text files. It provides functionality similar to the Unix `wc` command but is implemented in C++. This tool can be used to quickly get statistics about text files, which can be particularly useful for analyzing file content.
+This project is my solution to the Word Count (WC) Challenge posted on codingchallenges.fyi. The challenge required the implementation of a command line utility similar to the Unix wc command. This utility counts the number of characters and lines in a given text file, displaying the count along with the filename.
 
 ## Features
 
