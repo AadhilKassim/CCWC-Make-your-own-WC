@@ -76,6 +76,5 @@ If you would like to contribute to this project, please follow these steps:
 
 For any questions or comments, please reach out to [aadhikassim@gmail.com](mailto:aadhikassim@gmail.com).
 
----
 
 Thank you for using the WC Tool!
