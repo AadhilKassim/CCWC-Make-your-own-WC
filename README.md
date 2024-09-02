@@ -79,5 +79,3 @@ For any questions or comments, please reach out to [aadhikassim@gmail.com](mailt
 ---
 
 Thank you for using the WC Tool!
-
-```
