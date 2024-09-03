@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <clocale>
+#include <cstdlib>
 
 int readchar(const char *a)
 {
@@ -71,9 +73,9 @@ int readword(const char *a)
     {
         while (rfile.get(ch))
         {
-            if (std::isspace(ch)) //check if ch is equal to space, tab, and newline
+            if (std::isspace(ch)) // check if ch is equal to space, tab, and newline
             {
-                if (in_word) //if true increment word count and turn in_word false
+                if (in_word) // if true increment word count and turn in_word false
                 {
                     wordcount++;
                     in_word = false;
@@ -83,16 +85,15 @@ int readword(const char *a)
             {
                 in_word = true;
             }
-            
         }
 
-        //increment for last word.
+        // increment for last word.
         if (in_word)
-            {
-                wordcount++;
-            }
-            
-         std::cout << "\t" << wordcount << " " << a << "\n"; // print word count
+        {
+            wordcount++;
+        }
+
+        std::cout << "\t" << wordcount << " " << a << "\n"; // print word count
 
         return 0;
     }
@@ -105,31 +106,44 @@ int readword(const char *a)
 
 int readletter(const char *a)
 {
+    std::setlocale(LC_ALL, "C.UTF-64");
+
     std::ifstream rfile(a, std::ios::binary); // open file to be read
 
-    std::string line;
-    int charcount{};
+    // std::string line;
+    char ch;
+    int charcount = 0;
+    char buffer[MB_CUR_MAX]; // buffer for multibyte characters
 
-    if (rfile.is_open())
-    {
-        while (std::getline(rfile,line))
-        {
-            charcount+=line.length();
-        }
-        rfile.close(); // Ensure the file is closed after reading
-
-        std::cout << "\t" << charcount << " " << a << "\n"; // print character count
-
-        if (charcount == 0)
-        {
-            std::cerr << "The file does not have any characters!\n"; // error for 0 output
-        }
-
-        return 0;
-    }
-    else
+    if (!rfile.is_open())
     {
         std::cerr << "The file " << a << " could not be opened!\n"; // error for when file open fails or file not found
         return 1;
     }
+
+    while (rfile.read(&ch, 1)) // read one byte at a time
+    {
+        buffer[0] = ch;
+        int len = std::mbrlen(buffer, 1, nullptr); // check if the byte is the start of a multibyte character
+
+        if (len > 0)
+        {
+            charcount++; // increment character count
+        }
+        else if (len == -1 || len == -2)
+        {
+            std::cerr << "Invalid or incomplete multibyte sequence encountered.\n";
+            return 1;
+        }
+    }
+    rfile.close(); // Ensure the file is closed after reading
+
+    std::cout << "\t" << charcount << " " << a << "\n"; // print character count
+
+    if (charcount == 0)
+    {
+        std::cerr << "The file does not have any characters!\n"; // error for 0 output
+    }
+
+    return 0;
 }
