@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
             }
         }else
         {
-            std::cerr << "Unkown option";
+            std::cerr << "Unknown option";
 
         }
     }else
